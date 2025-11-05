@@ -25,7 +25,14 @@ class AppointmentBooking extends Component
             'time' => 'required',
         ]);
 
-        //SAVE TO DATABASE WILL BE HERE
+        Appointment::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'date' => $this->date,
+            'time' => $this->time,
+            'message' => $this->message,
+        ]);
 
         $this->successMessage = 'Appointment booked successfully! We will contact you soon.';
         $this->reset(['name', 'email', 'phone', 'date', 'time', 'message']);
