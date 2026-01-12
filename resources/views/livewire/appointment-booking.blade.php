@@ -54,7 +54,7 @@
                 <input
                     type="date"
                     id="date"
-                    wire:model="date"
+                    wire:model.live="date"
                     min="{{date('Y-m-d')}}"
                     class="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 text-white"
                 >

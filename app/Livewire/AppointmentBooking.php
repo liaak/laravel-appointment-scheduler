@@ -25,6 +25,17 @@ class AppointmentBooking extends Component
             'time' => 'required',
         ]);
 
+        // Check if selected time is in the past for today's date
+        if ($this->date === date('Y-m-d')) {
+            $selectedDateTime = strtotime($this->date . ' ' . $this->time);
+            $currentDateTime = time();
+
+            if ($selectedDateTime <= $currentDateTime) {
+                $this->addError('time', 'The selected time has already passed. Please choose a future time slot.');
+                return;
+            }
+        }
+
         Appointment::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -39,10 +50,21 @@ class AppointmentBooking extends Component
     }
 
     public function getAvailableHours() {
-        return [
+        $allHours =  [
             '09:00', '10:00', '11:00', '12:00',
             '13:00', '14:00', '15:00', '16:00', '17:00'
         ];
+
+        $bookedHours = [];
+        if ($this->date) {
+            $bookedHours = $this->getBookedHoursForDate($this->date);
+        }
+
+        return array_diff($allHours, $bookedHours);
+    }
+
+    public function getBookedHoursForDate($date) {
+        return Appointment::where('date', $date)->pluck('time')->toArray();
     }
 
     public function render() {
