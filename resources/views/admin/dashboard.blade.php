@@ -109,7 +109,89 @@
             margin-bottom: 20px;
         }
 
+        .close {
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
 
+        .close:hover {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: -10px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="email"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
 
 
 
@@ -137,7 +219,7 @@
                     @foreach($appointments as $appointment)
                         <tr>
                             <td>{{$appointment -> date}}</td>
-                            <td>{{$appointment -> hour}}</td>
+                            <td>{{$appointment -> time}}</td>
                             <td>{{$appointment -> name}}</td>
                             <td>{{$appointment -> phone}}</td>
                             <td>{{$appointment -> email}}</td>
@@ -190,5 +272,106 @@
 
 
     </div>
+
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+        async function editAppointment(id) {
+            try {
+                const response = await fetch(`{{ url('/admin/appointments') }}/${id}`);
+                const data = await response.json();
+
+                document.getElementById('id').value = data.id;
+                document.getElementById('date').value = data.date;
+                document.getElementById('hour').value = data.time;
+                document.getElementById('name').value = data.name;
+                document.getElementById('phone').value = data.phone;
+                document.getElementById('email').value = data.email;
+                document.getElementById('notes').value = data.message || '';
+
+
+                document.getElementById('editModal').style.display = 'block';
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to load appointment data');
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        async function deleteAppointment(id) {
+            if (!confirm('Are you sure you want to delete this appointment?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`{{ url('/admin/appointments') }}/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Appointment deleted successfully');
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to delete appointment');
+            }
+        }
+
+
+        document.getElementById('editForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById('id').value;
+            const formData = {
+                date: document.getElementById('date').value,
+                time: document.getElementById('hour').value,
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('notes').value
+            };
+
+            try {
+                const response = await fetch(`{{ url('/admin/appointments') }}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Appointment updated successfully');
+                    closeEditModal();
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to update appointment');
+            }
+        });
+
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeEditModal();
+            }
+        }
+
+    </script>
 
 </body>

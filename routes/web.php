@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('home');
@@ -22,7 +23,9 @@ Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
 
-Route::get('/admin', function () {
-    $appointments = \App\Models\Appointment::all();
-    return view('admin.dashboard', compact('appointments'));
-})->name('admin');
+// Admin routes using AdminController
+Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+Route::get('/admin/appointments/{id}', [AdminController::class, 'getAppointment'])->name('admin.appointment.get');
+Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.appointment.update');
+Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.appointment.delete');
+
