@@ -21,3 +21,8 @@ Route::get('/contact', function () {
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
+
+Route::get('/admin', function () {
+    $appointments = \App\Models\Appointment::all();
+    return view('admin.dashboard', compact('appointments'));
+})->name('admin');

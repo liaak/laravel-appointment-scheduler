@@ -9,13 +9,13 @@
 
                 <section>
                     <h3 class="text-2xl font-semibold mb-3" style="color: #816B77;">1. General Information</h3>
-                    <p>This privacy policy provides information about the collection and processing of personal data by this website (Power by Eszti).</p>
+                    <p>This privacy policy provides information about the collection and processing of personal data by this website (Website Name).</p>
                 </section>
 
                 <section>
                     <h3 class="text-2xl font-semibold mb-3" style="color: #816B77;">2. Data Controller</h3>
-                    <p><strong>Name:</strong> Power by Eszti</p>
-                    <p><strong>Email:</strong> iliaakos@gmail.com</p>
+                    <p><strong>Name:</strong> Name placeholder</p>
+                    <p><strong>Email:</strong> email@placeholder.com</p>
                 </section>
 
                 <section>
@@ -54,13 +54,6 @@
                                 <li><strong>XSRF-TOKEN</strong> - Security protection against CSRF attacks on forms</li>
                             </ul>
                         </div>
-
-                        <div>
-                            <p class="font-semibold">Third-Party Cookies:</p>
-                            <ul class="list-disc list-inside ml-4 space-y-1">
-                                <li><strong>Google reCAPTCHA</strong> - Bot protection and spam prevention on forms (if implemented)</li>
-                            </ul>
-                        </div>
                     </div>
 
                     <p class="mt-3">Cookie consent appears on your first visit to the website. You can accept or decline cookies. Your choice can only be modified later by clearing your browser's cookie settings.</p>
@@ -71,7 +64,6 @@
                     <p>We do not share your data with third parties, except for:</p>
                     <ul class="list-disc list-inside ml-4 space-y-1">
                         <li>Email service provider - for sending appointment confirmation emails</li>
-                        <li>Google reCAPTCHA service - for bot protection purposes (if implemented)</li>
                         <li>Hosting provider - for storing data securely on our servers</li>
                     </ul>
                     <p class="mt-2">We will never sell, rent, or trade your personal information to third parties for marketing purposes.</p>
@@ -83,8 +75,6 @@
                     <ul class="list-disc list-inside ml-4 space-y-1">
                         <li>Encrypted data transmission (HTTPS in production environment)</li>
                         <li>Secure database storage with access controls</li>
-                        <li>Bot protection (reCAPTCHA if implemented)</li>
-                        <li>Rate limiting to prevent spam and abuse</li>
                         <li>Regular security updates and monitoring</li>
                     </ul>
                 </section>
@@ -102,7 +92,7 @@
                         <li><strong>Withdraw Consent</strong> - Withdraw consent at any time (e.g., newsletter subscriptions)</li>
                         <li><strong>Lodge a Complaint</strong> - File a complaint with the supervisory authority</li>
                     </ul>
-                    <p class="mt-2">To exercise any of these rights or for data protection inquiries, please contact us at <strong>iliaakos@gmail.com</strong>.</p>
+                    <p class="mt-2">To exercise any of these rights or for data protection inquiries, please contact us at <strong>email@placeholder.com</strong>.</p>
                 </section>
 
                 <section>
@@ -129,7 +119,7 @@
                 <section>
                     <h3 class="text-2xl font-semibold mb-3" style="color: #816B77;">12. Contact Us</h3>
                     <p>If you have any questions or concerns about this privacy policy or our data practices, please contact us:</p>
-                    <p class="mt-2"><strong>Email:</strong> <a href="mailto:iliaakos@gmail.com" class="underline hover:opacity-70" style="color: #816B77;">iliaakos@gmail.com</a></p>
+                    <p class="mt-2"><strong>Email:</strong> <a href="mailto:" class="underline hover:opacity-70" style="color: #816B77;">email@placeholder.com</a></p>
                     <p class="mt-2">We will respond to your inquiry within 30 days.</p>
                 </section>
 
