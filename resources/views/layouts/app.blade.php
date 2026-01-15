@@ -101,8 +101,6 @@
             </p>
         </div>
     </footer>
-    <!-- Cookie Consent -->
-    @include('components.cookie-consent')
     <!-- Livewire JavaScript library -->
     @livewireScripts
     <!-- Allow child pages to add scripts -->
