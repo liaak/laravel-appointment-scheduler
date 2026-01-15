@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="text-black font-sans" style="background-color: #FCD5CE; background-image: url('{{asset('images/background.jpg')}}'); background-size: cover; background-attachment: fixed; background-position: center;">
+<body class="text-black font-sans" style="background-color: #816B77;">
     <div class="sticky top-0 z-50">
         <!-- Title always visible -->
         <header class="shadow-md border--b" style="background-color: #816B77;">
