@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    public function dashboard()
+    public function index(Request $request)
     {
-        $appointments = Appointment::all();
+        $query = Appointment::query();
+
+        if ($request->has('date_from') && $request->date_from) {
+            $query->where('date', '>=', $request->date_from);
+        }
+
+        if ($request->has('date_to') && $request->date_to) {
+            $query->where('date', '<=', $request->date_to);
+        }
+
+        $appointments = $query->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
+
         return view('admin.dashboard', compact('appointments'));
     }
 

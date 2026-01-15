@@ -20,7 +20,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 20px 40px;
-            display: block;
+            display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -193,6 +193,24 @@
             box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
         }
 
+        .filter-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group input[type="date"] {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .filter-group span {
+            color: white;
+        }
+
 
 
     </style>
@@ -200,6 +218,13 @@
 <body>
     <div class="header">
         <h1>Admin Dashboard</h1>
+        <form method="GET" action="{{ route('admin') }}" class="filter-group">
+            <span>Date:</span>
+            <input type="date" name="date_from" value="{{ request('date_from') }}" placeholder="From">
+            <span>-</span>
+            <input type="date" name="date_to" value="{{ request('date_to') }}" placeholder="To">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     </div>
     <div class="container">
         @if($appointments->count() > 0)

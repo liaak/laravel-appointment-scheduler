@@ -24,7 +24,7 @@ Route::get('/privacy-policy', function () {
 })->name('privacy-policy');
 
 // Admin routes using AdminController
-Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/appointments/{id}', [AdminController::class, 'getAppointment'])->name('admin.appointment.get');
 Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.appointment.update');
 Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.appointment.delete');
