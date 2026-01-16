@@ -1,59 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# WebpageAppointment - Appointment Booking System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This application allows users to book appointments online and provides an admin dashboard for managing bookings.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Public Interface**
+  - Browse services offered
+  - Book appointments with real-time availability
+  - View contact information and privacy policy
+  - Responsive design for mobile and desktop
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Admin Dashboard**
+  - View all appointments in a clean, organized interface
+  - Filter appointments by date range
+  - Edit appointment details with modal forms
+  - Delete appointments
+  - Dynamic updates with JavaScript and AJAX
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Appointment Management**
+  - Create new appointments with name, email, phone, date, time, and notes
+  - Prevent booking of past time slots
+  - Real-time availability checking
+  - Data validation and error handling
 
-## Learning Laravel
+## Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Backend
+- **PHP 8.2+** - Modern PHP for server-side logic
+- **Laravel 12.0** - Web application framework
+- **Livewire 3.6** - Used for the public appointment booking form
+- **MySQL** - Relational database management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+- **Tailwind CSS 4.0** - Utility-first CSS framework
+- **Vite 7.0** - Fast build tool and development server
+- **JavaScript (ES6+)** - For interactive features and AJAX requests
+- **Blade Templates** - Laravel's templating engine
 
-## Laravel Sponsors
+### Testing
+- **PHPUnit 11.5** - PHP testing framework for unit and feature tests
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation
 
-### Premium Partners
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js & npm
+- MySQL database
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Setup Instructions
 
-## Contributing
+1. **Clone the repository**
+   ```
+   git clone <repository-url>
+   cd WebpageAppointment
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+2. **Install PHP dependencies**
+   ```
+   composer install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **Install Node dependencies**
+   ```
+   npm install
+   ```
 
-## Security Vulnerabilities
+4. **Environment Configuration**
+   ```
+   create your .env (copy .env.example)
+   ```
+   
+   Update the following in your `.env` file:
+   ```
+   DB_CONNECTION=mysql
+   DB_DATABASE=wp_appointment
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. **Generate Application Key**
+   ```
+   php artisan key:generate
+   ```
+
+6. **Run Migrations**
+   ```
+   php artisan migrate
+   ```
+
+7. **Build Frontend Assets**
+   ```
+   npm run build
+   ```
+   
+   For development with hot-reload:
+   ```
+   npm run dev
+   ```
+
+8. **Start the Development Server**
+   ```
+   php artisan serve
+   ```
+
+   Visit `http://localhost:8000` in your browser.
+
+
+
+## Testing
+
+Run the test suite:
+
+```
+php artisan test
+```
+
+
+## Usage
+
+### Booking an Appointment
+1. Navigate to the Appointments page
+2. Fill in the booking form with your details
+3. Select a preferred date and time
+4. Submit the form
+5. Receive on-screen confirmation
+
+### Admin Access
+1. Navigate to `/admin`
+2. View all appointments in a table
+3. Use filters to view appointments by date range
+4. Click "Edit" to modify appointment details
+5. Click "Delete" to remove appointments
+
+## Routes
+
+**Public:** `/` (home), `/services`, `/appointments`, `/contact`, `/privacy-policy`
+
+**Admin:** `/admin` (dashboard)
+
+**AJAX Endpoints:** `GET/PUT/DELETE /admin/appointments/{id}`
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Copyright (c) 2025 liaak - All Rights Reserved
+
+This project is for personal, educational, and portfolio purposes only. Commercial use and redistribution for profit are not permitted.
+
+## Credits
+
+Built with [Laravel](https://laravel.com) and [Livewire](https://livewire.laravel.com).
